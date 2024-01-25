@@ -63,19 +63,21 @@ export function deleteTrack(playlist, track) {
  * @returns {string[]} list of artists
  */
 export function listArtists(playlist) {
-  throw new Error('Please implement the listArtists function');
+  let arr = []
+  for(let loop_counter = 0; loop_counter<playlist.length;loop_counter++) {
+    arr[loop_counter]= playlist[loop_counter].split(' - ')[1]
+  }
+  const unique_artist = [...new Set(arr)]
+  return unique_artist
 }
 
 const playlist = [
-  'The Fashion Show - Grace Jones',
-  'Dr. Funkenstein - Parliament',
+  'Onu Alma Beni Al - Sezen Aksu',
+  'Famous Blue Raincoat - Leonard Cohen',
+  'Rakkas - Sezen Aksu',
 ];
 
-hasTrack(playlist, 'Dr. Funkenstein - Parliament');
-//=> true
+listArtists(playlist);
+//=> ['Portishead', 'Devendra Banhart']
 
-hasTrack(playlist, 'Walking in the Rain - Grace Jones');
-//=> false
-
-
-console.log(hasTrack(playlist, 'Dr Funkenstein - Parliament'))
+console.log(listArtists(playlist))
